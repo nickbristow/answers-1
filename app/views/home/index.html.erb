@@ -1,24 +1,24 @@
-<% set_meta_tags :description => "Find answers to your questions about #{official_city_name} City Services." %>
+<% set_meta_tags :description => "Find answers to your questions about Honolulu City Services." %>
+
 <div class="modal-container span8">
   <div class="main-modal">
-    <div id="welcome-line-l"></div>
-    <div id="welcome-line-r"></div>
-    <h3 class="welcome">Welcome To</h3>
-    <h1 class="home-modal"><%= official_site_title %></h1>
-    <p class="call">
-      <%= "Find answers to your questions about City of #{official_city_name} services." %>
+    <div class="main-modal-header"><h2>Welcome to Answers</h2></div>
+    
+    <p>
+      Find answers to your questions about 18f.
     </p>
 
     <div class="ribbon-front">
-      <div class="triangle-l"></div>
-      <div class="triangle-r"></div>
       <div class="ribbon-wrapper">
         <form id="search" action="search" name="search" method="get">
-          <input type="text" name="q" id="query" title='query' placeholder="Try parking, jobs, or permits...">
-          <input class="btn-search" id="home-search" type="submit" value="SEARCH" title="Search">
+          <label for="query">Search: </label>
+          <input type="text" name="q" id="query" title='query'
+            placeholder="Try driver license, jobs, or registration...">
+          <input class="btn-search" id="home-search" type="submit" value="Submit"
+            title="Submit">
         </form>
       </div>
-    </div><!-- /ribbon-wrapper -->
+    </div>
 
     <div class="popular">
       <div class="pop-heading">
@@ -27,9 +27,7 @@
       <div class="pop-categories">
         <%= render :partial => 'home/category', :collection => @popular_categories %>
       </div>
-    </div><!-- /popular -->
+    </div>
 
   </div><!-- /main-modal -->
 </div><!-- /modal-container -->
-
-<!--<%= render :partial => 'shared/autocomplete' %>-->

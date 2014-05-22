@@ -1,7 +1,6 @@
 <% set_meta_tags :description => @article.preview,
-                 :canonical => official_government_long_url(request.fullpath),
+                 :canonical => "http://answers.honolulu.gov#{request.fullpath}",
                  :title => [@article.category.name, @article.title] %>
-
 <div class="page-container article">
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>
@@ -15,7 +14,10 @@
       <div class="main-content">
         <h3 class="content-type"><%= @article.class.to_s.split(/(?=[A-Z])/).join(' ') %></h3>
         <div class="header">
-          <%= content_tag(:h1, @article.title ) %>
+          <h1>
+            <%= @article.title %>
+            <%= render :partial => "shared/twitter_share" %>
+          </h1>
         </div>
         <div class="content-text">
           <% unless @content_main.strip.blank? %>
