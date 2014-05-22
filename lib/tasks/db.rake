@@ -2,6 +2,7 @@ require 'yaml'
 require 'pg'
 
 namespace 'db' do
+  desc "Create's database and user from database.yml for DEVELOPMENT only: grants all privileges (options: USER=x)"
   task :prepare do
     Rake::Task["db:create_user"].execute
     Rake::Task["db:create_database"].execute
