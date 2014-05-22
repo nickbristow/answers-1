@@ -46,22 +46,29 @@ group :assets do
   gem 'therubyracer'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'guard'
+  gem 'pry'
+  gem 'pry-nav'
+end
+
 group :test, :development do
-  gem 'memcached'
   gem 'dotenv-rails'
+  gem 'guard-spork'
+  gem 'memcached'
   gem 'rspec-rails', '>= 2.10.1'
 end
 
 group :test do
-  gem 'shoulda'
   gem 'capybara'
-  gem 'launchy'
-  gem 'guard-rspec'
-  gem 'factory_girl_rails'
-  gem 'spork-rails'
-  gem 'guard-spork'
   gem 'capybara-webkit'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'shoulda'
   gem 'simplecov', '~> 0.7.1', require: false
+  gem 'spork-rails'
   gem 'webmock'
 end
