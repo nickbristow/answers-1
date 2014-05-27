@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'nokogiri'
-gem 'rails', '3.2.13'
+gem 'nokogiri', '1.4.7'
+gem 'rails', '3.2.17'
 gem 'pg'
 gem 'thin'
 gem 'foreman'
@@ -17,6 +17,7 @@ gem 'jquery-rails', '~> 2.3.0'
 gem 'meta-tags', require: 'meta_tags'
 
 gem 'delayed_job_active_record'
+gem 'memcachier'
 gem 'dalli'
 gem 'kgio'
 
@@ -48,12 +49,14 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'spring-commands-rspec'
   gem 'memcached'
   gem 'dotenv-rails'
   gem 'rspec-rails', '>= 2.10.1'
 end
 
 group :test do
+  gem 'vcr'
   gem 'shoulda'
   gem 'capybara'
   gem 'launchy'
