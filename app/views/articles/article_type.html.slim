@@ -1,0 +1,47 @@
+- set_meta_tags  :description => "All #{@article_type.split(/(?=[A-Z])/).join(' ')} questions.", :canonical => official_government_long_url(request.fullpath)
+
+div.page-container
+  div.breadcrumbs
+    | #{link_to( "Home", root_url)}
+       >
+        #{title "All #{@article_type.split(/(?=[A-Z])/).join(' ')}s"}
+  div.row
+    div.span9
+      div.main-content
+        div.header
+          h1
+            | #{@article_type.split(/(?=[A-Z])/).join(' ')}s
+        erb:
+          <ul>
+            <% category = nil %>
+            <% @articles.each do |article| %>
+            <% next unless article.published? %>
+              
+                <% if( article.category != category) %>
+                  <% if(category) %>
+                      </ul>
+                  <% end %>
+                    <% category = article.category %>
+                    <li class="category-listing">
+                    <% unless article.category %>
+                      <%= content_tag(:h1, "Miscellaneous") %>
+                    <% else %>
+                    <%= content_tag(:h1, link_to(article.category.name,article.category)) %>
+                    <% end %>
+                     <ul class="category-articles">
+                <% end %>      
+                      
+                        <li class="article-listing">
+                          <%= content_tag(:h2, link_to(article.title,article))%>
+                          <p class="preview"><%= article.preview %></p>
+                        </li>
+            <% end %>
+            <% if(category) %>
+              </ul>
+            <% end %>
+          </ul>
+          
+            
+    div.span3
+      == render :partial => 'shared/categories_sidebar'
+    

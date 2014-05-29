@@ -1,0 +1,25 @@
+- set_meta_tags :description => @article.preview, :canonical => official_government_long_url(request.fullpath), :title => [@article.category.try(:name), @article.title]
+div class="page-container article"
+  div.breadcrumbs
+    = link_to( "Home", root_url)
+    - if @article.category.present?
+      | > #{link_to(@article.category.name, @article.category)}
+    | > #{title @article.title}
+  div.row
+    div.span9
+      div.main-content
+        h3.content-type
+          = @article.class.to_s.split(/(?=[A-Z])/).join(' ')
+        div.header
+          = content_tag(:h1, @article.title )
+        div.content-text
+          - unless @content_main.strip.blank?
+            div.quick_top
+              = @content_main.html_safe
+          = @content_main_extra.html_safe
+          - unless @content_need_to_know.strip.blank?
+            div.quick_bottom
+              h3 What You Need to Know
+            = @content_need_to_know.html_safe
+    div.span3
+      == render :partial => 'shared/articles_sidebar'

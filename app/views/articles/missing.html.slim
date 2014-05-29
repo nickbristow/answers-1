@@ -1,0 +1,13 @@
+div class="page-container article"
+  div.breadcrumbs
+    | #{link_to( "Home", root_url)} > (404) Page not found
+  div.row
+    div.span9
+      div.main-content
+        div.header Sorry, we can't find what you are looking for.
+        div.content-text
+          p We are working to aggregate as much info from the City of Oakland as we can. Unfortunately it is an ongoing process and we don't yet have the article you are looking for.
+        
+    div.span3
+      = render :partial => 'shared/categories_sidebar'
+    

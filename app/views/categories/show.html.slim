@@ -1,0 +1,20 @@
+- set_meta_tags :description => "Questions related to #{@category.name}.", :canonical => official_government_long_url(request.fullpath)
+div.page-container
+  div.breadcrumbs
+    | #{link_to( "Home", root_url)} > #{title @category.name}
+  div.row
+    div.span9
+      div.main-content
+        div.header
+          h1 = @category.name
+        = content_tag_for :p,  @category.description unless @category.description.blank?
+        ul
+          - @category.articles.by_access_count.each do |article|
+            - next unless article.published?
+            li.article-listing
+              = content_tag( :h2, link_to( article.title, article) )
+              p.preview
+                = article.preview
+    div.span3
+      == render :partial => 'shared/categories_sidebar'
+      

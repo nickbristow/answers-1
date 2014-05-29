@@ -1,0 +1,18 @@
+div#navigation
+  = render :partial => 'shared/search_form'
+div.row
+  div.page-container
+    div.row
+      div.span9
+        div.main-content
+          div.header
+            h1 Sorry we can't find what you are looking for.
+          div.article-section
+            p
+              | We are working to aggregate as much info from the City of #{official_city_name} as we can. Unfortunately it is an ongoing process and we don't yet have the category you are looking for.
+            h2 In the meantime we recommend:
+            ul
+              li Searching the #{link_to_official_government_website} site for more information.
+              li Checking back in a few weeks!
+      div.span3
+        == render :partial => 'shared/categories_sidebar'
