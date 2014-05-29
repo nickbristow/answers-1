@@ -12,8 +12,20 @@ div class="page-container article"
         div.header
           = content_tag(:h1, @article.title )
         div.content-text
-          - unless @content_main.strip.blank?
+          - if @content_main.present?
             div.quick_top
               = @content_main.html_safe
+        div.header
+          = content_tag(:h1, @article.title_es )
+        div.content-text
+          - if @content_main_es.present?
+            div.quick_top
+              = @content_main_es.html_safe
+        div.header
+          = content_tag(:h1, @article.title_cn )
+        div.content-text
+          - if @content_main_cn.present?
+            div.quick_top
+              = @content_main_cn.html_safe
     div.span3
       = render :partial => 'shared/articles_sidebar'
