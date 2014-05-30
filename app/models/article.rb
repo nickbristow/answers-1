@@ -64,7 +64,10 @@ class Article < ActiveRecord::Base
   after_destroy :qm_after_destroy
 
   before_validation :set_access_count_if_nil
-
+  def title_es
+  end
+  def title_cn
+  end
   def legacy?
     !render_markdown
   end
