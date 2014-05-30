@@ -1,10 +1,9 @@
 - set_meta_tags :description => "Questions related to #{@category.name}.", :canonical => official_government_long_url(request.fullpath)
-div.page-container
+div class="page-container article"
   div.breadcrumbs
     | #{link_to( "Home", root_url)} > #{title @category.name}
-  div.row
-    div.span9
-      div.main-content
+  div.article-main-content
+        
         div.header
           h1 = @category.name
         = content_tag_for :p,  @category.description unless @category.description.blank?
@@ -17,6 +16,6 @@ div.page-container
               = content_tag( :h2, link_to( article.title, article) )
               p.preview
                 = article.preview
-    div.span3
+  div.side-bar
       == render :partial => 'shared/categories_sidebar'
       

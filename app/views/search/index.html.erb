@@ -2,13 +2,12 @@
                   :canonical => official_government_long_url(request.fullpath),
                   :title => "Search results for #{@query}." %>
 
-<div class="page-container search">
-  <div class="row">
-    <div class="span9">
-      <div class="main-content">
+<div class="page-container article">
+  <div class="article-main-content">
         <div class="header">
-          <h1>Search results for: "<strong><%=@query%></strong>"</h1>
+          <h2>Search results for: "<strong><%=@query%></strong>"</h2>
           <br/>
+        </div>
 
           <% if @results.empty? %>
             <p>Sorry, no results found for "<%=@query%>".  Please try rephrasing your search terms.</p>
@@ -39,10 +38,8 @@
                 <% end %>
             </ul>
           <% end -%>
-        </div>
-      </div>
     </div>
-    <div class="span3">
+    <div class="side-bar">
       <%= render :partial => 'shared/categories_sidebar' %>
     </div><!-- /span3 -->
   </div>

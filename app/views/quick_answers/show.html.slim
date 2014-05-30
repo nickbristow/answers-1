@@ -4,28 +4,27 @@ div class="page-container article"
     = link_to( "Home", root_url) 
     - if @article.category.present?
       | > #{link_to(@article.category.name, @article.category)} > #{title @article.title}
-  div.row
-    div.span9
-      div.main-content
-        h3.content-type
-          = @article.class.to_s.split(/(?=[A-Z])/).join(' ')
-        div.header
-          = content_tag(:h1, @article.title )
-        div.content-text
-          - if @content_main.present?
-            div.quick_top
-              = @content_main.html_safe
-        div.header
-          = content_tag(:h1, @article.title_es )
-        div.content-text
-          - if @content_main_es.present?
-            div.quick_top
-              = @content_main_es.html_safe
-        div.header
-          = content_tag(:h1, @article.title_cn )
-        div.content-text
-          - if @content_main_cn.present?
-            div.quick_top
-              = @content_main_cn.html_safe
-    div.span3
+  
+  div.article-main-content
+    h3.content-type
+      = @article.class.to_s.split(/(?=[A-Z])/).join(' ')
+    div.header
+      = content_tag(:h1, @article.title )
+    div.content-text
+      - if @content_main.present?
+        div.quick_top
+          = @content_main.html_safe
+    div.header
+      = content_tag(:h1, @article.title_es )
+    div.content-text
+      - if @content_main_es.present?
+        div.quick_top
+          = @content_main_es.html_safe
+    div.header
+      = content_tag(:h1, @article.title_cn )
+    div.content-text
+      - if @content_main_cn.present?
+        div.quick_top
+          = @content_main_cn.html_safe
+  div.side-bar
       = render :partial => 'shared/articles_sidebar'

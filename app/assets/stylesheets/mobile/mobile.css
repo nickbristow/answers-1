@@ -117,10 +117,8 @@ div.contact {
 }
 
 div.article{ 
-  padding: 10px 15px;
   min-width:20px;
   max-width:inherit;
-  border-top: 3px solid #BD8A38;
   position: relative;
   font: 14px arial;
   position:relative;
@@ -134,6 +132,8 @@ div.article h1{
   font-weight:normal;
   display: inline;
 }
+
+
 
 .disclaimer {
 	padding: 0 20px;

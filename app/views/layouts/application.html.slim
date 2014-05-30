@@ -1,93 +1,34 @@
 doctype 5
 html
-  head
-    = display_meta_tags :site => "#{official_site_title}"
-    meta name="robots" content="index,nofollow"
-    meta http-equiv="content-type" content="text/html;charset=UTF-8"
-    meta name="viewport" content="width=device-width,initial-scale =1,maximum-scale=1,user-scalable=no"
-    meta name="apple-mobile-web-app-capable" content="yes"
-    == include_gon
-    == stylesheet_link_tag    "application-all", :media => "all"
-    == stylesheet_link_tag    "application-mobile", :media => "all and (max-width: 969px)"
-    == stylesheet_link_tag    "application-print", :media => "print"
-    == javascript_include_tag "application"
+  head 
+    = display_meta_tags :site => "Answers"
+    meta name="robots" content="index,nofollow" /
+    meta http-equiv="content-type" content="text/html;charset=UTF-8" /
+    meta name="viewport" content="width=device-width,initial-scale =1,maximum-scale=1,user-scalable=no" /
+    meta name="apple-mobile-web-app-capable" content="yes" /
+    = stylesheet_link_tag "application-all", :media => "all"
+    = stylesheet_link_tag "application-mobile", :media => "all and (max-width: 969px)"
+    = stylesheet_link_tag "application-print", :media => "print"
+
+    /[if lte IE 8]
+      = stylesheet_link_tag    "application-ie", :media=> "all"
+    
+    = javascript_include_tag "application"
     = csrf_meta_tags
-    /[if lte ie8]
-      ==stylesheet_link_tag    "application-ie", :media=> "all" 
-    css:
-      body {
-       background:transparent url('#{ENV["BACKGROUND_IMAGE"]}') repeat 0 100%;
-      }
-  body class="#{@bodyclass}" onload="if($){ $('#query').focus(); }"
+  body
     div#wrapper
-      div.navbar-top
-        / <p class="notice alert alert-info"><%= notice %></p>
-         / <p class="alert alert-error"><%= alert %></p>
-        div.container
-          div.row
-            div class="logo span4"
-              a href="/" class="hnl-logo"
-                = "#{official_site_title}"
-              span.bubble
-                img.beta src="/assets/beta.png" alt="beta"
-            
-            ul class="nav-top span5"
-              li class=""
-                = link_to("Browse", "/articles/article-type/quick-answer")
-              
-              /li class=""
-               / = link_to("Guides", "/articles/article-type/guide")
-              
-              /li class=""
-               / = link_to("Web Services", "/articles/article-type/web-service")
-              
-            
-            - if !current_page?('/')
-              div class="header-search span3"
-                == render :partial => 'shared/search_form'
-            
-          /! /row
-        /! /container
-      /! /navbar-top
-      div class="container main clearfix"
-        /! main content container 
-        == yield
-      /! /container-fluid 
-    /! /wrapper 
-    div.footer
-      div.container
-        ul.footer-links
-          li
-            =link_to("About", about_path)
-          li
-            a href="mailto:#{official_contact_email}"
-              | Contact
-          li
-            a href="https://github.com/city-of-oakland/oakland_answers"
-              | Code
-          - if not official_style_guide.nil?
-            li
-              a href="#{official_style_guide}" target="_blank"
-                | Style Guide
-          li
-            = link_to("Sign In", admin_dashboard_path)
-        
-        div.cfa-logos
-          a href="http://codeforamerica.org/"
-            img.right src="/assets/cfa_logo_footer.png" alt="Code for America" /
-          span.plus &#43;
-          a.right href="http://openoakland.org/"><img src="/assets/openoaklandlogo.png" alt="City of Oakland" /
-          span.plus&#43;
-          a.right href="http://www2.oaklandnet.com"><img src="/assets/OaklandCityTree.png" alt="City of Oakland" /
-    /! /footer 
+      == render :partial => 'shared/header'
+      == yield
+    == render :partial => 'shared/footer'
+
 
   javascript:
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '<%=ENV['GOOGLE_ANALYTICS_KEY']%>']);
-      _gaq.push(['_trackPageview']);
-      
-      (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '<%=ENV['GOOGLE_ANALYTICS_KEY']%>']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
