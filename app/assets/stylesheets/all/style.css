@@ -293,16 +293,11 @@ div.pop-heading {
 div.pop-categories p a {
 }
 
-div.pop-categories li:not(:last-child):after {
-  /*content: " - ";*/
-}
 
-div.pop-categories li+li:before {
-  content: '- ';
-}
+
 
 div.pop-categories li {
-  display: inline;
+  display: block;
   font-size: 120%;
 }
 
@@ -628,7 +623,6 @@ div.breadcrumbs {
   color: #777;
 }
 div.content-text {
-  padding-top: 20px;
   font-weight: 300;
 }
 .article .content-text h2 {
@@ -663,6 +657,7 @@ div.content-text {
 div.quick_top{
   background: whitesmoke;
   padding: 20px;
+  margin-bottom:40px;
 }
 
 /* TABLE */
