@@ -1,10 +1,19 @@
 class QuickAnswersController < ApplicationController
   add_breadcrumb "Home", :root_url
+  
   def show
-    return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
+    
+    unless QuickAnswer.exists? params[:id]
+      add_breadcrumb "(404) Page not found"
+      return render(:template => 'articles/missing') 
+    end
 
     @article = QuickAnswer.find(params[:id])
-    return render(:template => 'articles/missing') unless @article.published?
+    
+    unless @article.published?
+      add_breadcrumb "(404) Page not found"
+      return render(:template => 'articles/missing') 
+    end
 
     if request.path != quick_answer_path( @article )
       logger.info "Old permalink: #{request.path}"
