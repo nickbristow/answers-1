@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  add_breadcrumb "Home", :root_url
   def index
   	@bodyclass = "results"
 
@@ -12,6 +13,7 @@ class CategoriesController < ApplicationController
   	return render(:template => 'categories/missing') unless Category.exists? params[:id]
 
     @category = Category.find(params[:id])
+    add_breadcrumb @category.name
     # redirection of old permalinks
     if request.path != category_path( @category )
       logger.info "Old permalink: #{request.path}"
