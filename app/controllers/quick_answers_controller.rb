@@ -1,5 +1,6 @@
 class QuickAnswersController < ApplicationController
   add_breadcrumb "Home", :root_url
+  
   def show
     
     unless QuickAnswer.exists? params[:id]
