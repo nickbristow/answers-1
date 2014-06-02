@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
   	@bodyclass = "results"
 
     @categories = Category.by_access_count
+    add_breadcrumb "Categories"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @categories }
