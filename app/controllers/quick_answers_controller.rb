@@ -1,5 +1,5 @@
 class QuickAnswersController < ApplicationController
-
+  add_breadcrumb "Home", :root_url
   def show
     return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
 
@@ -18,6 +18,11 @@ class QuickAnswersController < ApplicationController
       @content_html = @article.content
       render :show_html and return
     end
+    
+    if @article.category.present?
+      add_breadcrumb @article.category.name, @article.category
+    end
+    add_breadcrumb @article.title
 
     @content_main =  @article.md_to_html( :content_main )
     @content_main_extra = @article.md_to_html( :content_main_extra )
