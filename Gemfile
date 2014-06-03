@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'nokogiri', '1.4.7'
-gem 'rails', '3.2.17'
+gem 'nokogiri', '> 1.4.7'
+gem 'rails', '> 3.2.17'
 gem 'pg'
 gem 'thin'
 gem 'foreman'
@@ -55,6 +55,8 @@ group :test, :development do
   gem 'memcached'
   gem 'dotenv-rails'
   gem 'rspec-rails', '>= 2.10.1'
+  gem 'rspec-html-matchers'
+  gem 'inch', require: false
 end
 
 group :test do
