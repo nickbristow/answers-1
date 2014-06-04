@@ -26,6 +26,7 @@ Spork.prefork do
 
   RSpec.configure do |config|
     config.include Capybara::DSL
+    config.include FactoryGirl::Syntax::Methods
 
     config.before(:suite) do
       DatabaseCleaner.strategy = :transaction
@@ -39,6 +40,9 @@ Spork.prefork do
     config.after(:each) do
       DatabaseCleaner.clean
     end
+    
+    # from: http://engineering.sharethrough.com/blog/2013/08/10/greater-test-control-with-rspecs-tag-filters/
+    config.treat_symbols_as_metadata_keys_with_true_values = true
   end
 end
 
